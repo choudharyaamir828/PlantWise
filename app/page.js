@@ -59,13 +59,14 @@ export default function Home() {
       setResult(null)
 
       // Check if API key is available
-      const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY
+      const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
+
       if (!apiKey) {
         throw new Error('API key not found')
       }
 
       // Initialize the API
-      const genAI = new GoogleGenerativeAI("AIzaSyC2WF6ULxhzndZtoB4IdsSaODncCTAVC1M")
+      const genAI = new GoogleGenerativeAI(apiKey)
       
       // Load the model
       const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' })
